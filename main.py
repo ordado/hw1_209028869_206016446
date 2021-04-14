@@ -2,15 +2,22 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import sys
 import panda
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+def main(argv):
+    argv[0] = / home / student / C:\Users\kehat\PycharmProjects\hw1_209028869_206016446 / main.py
+    argv[1] = / home / student / C:\Users\kehat\OneDrive\Desktop\HW1 / london.csv
+    argv[2] = "hum, t1, cnt, season, is_holiday"
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main(sys.argv)
+
+
+
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
