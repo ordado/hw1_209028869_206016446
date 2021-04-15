@@ -7,10 +7,13 @@ import data
 
 
 def main(argv):
-    feature = ['cnt', 'hum']
+    feature = ['cnt', 'hum', 't1', 'season', 'is_holiday']
     main_data = data.load_data("london_sample.csv", feature)
     print(main_data)
-
+    values = {337}
+    data1, data2 = data.filter_by_feature(main_data, 'cnt', values)
+    print(data1)
+    print(data2)
 
 
 # Press the green button in the gutter to run the script.

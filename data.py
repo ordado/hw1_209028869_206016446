@@ -4,28 +4,42 @@ import pandas
 def load_data(path, features):
     df = pandas.read_csv(path)
     data = df.to_dict(orient="list")
-    save_featrure_should_delete = []
-    for list_features in features:
-        for key_data in data.keys():                       //1,2,3,4
-                                                           //2,3,4,5,6
-            if key_data != list_features:
-                save_featrure_should_delete.append(key_data)
+    feature_sholud_to_delete = []
+    for data_key in data.keys():
+        flag = 0
+        for elem_features in features:
+            if elem_features == data_key:
+                flag = 1
+        if flag == 0:
+            feature_sholud_to_delete.append(data_key)
 
-    for elem in save_featrure_should_delete:
+    for elem in feature_sholud_to_delete:
         del data[elem]
-
     return data
 
 
 def filter_by_feature(data, feature, values):
     data1 = {}
     data2 = {}
-    for elem_data in data[feature]:
-        for elem_values in values.items():
-            if elem_data == elem_values:
-                for keys in data.keys():
-                    data1[keys] = data[keys]
+    save_the_number_of_row_to_data1 = []
+    feature_list = data[feature]
+    for i, val in enumerate(feature_list):
+        for k in values:
+            if k == val:
+                save_the_number_of_row_to_data1.append(i)
+
+    for key in data.keys():
+        temp_list = data[key]
+        data1.setdefault(key, [])
+        data2.setdefault(key, [])
+        for index, val in enumerate(temp_list):
+            flag = 0
+            for k in save_the_number_of_row_to_data1:
+                if index == k:
+                    flag = 1
+                    break
+            if flag == 0:
+                data2[key].append(val)
             else:
-                for keys in data.keys():
-                    data2[keys] = data[keys]
+                data1[key].append(val)
     return data1, data2
