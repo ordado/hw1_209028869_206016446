@@ -4,16 +4,15 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import sys
 import data
+import statistics
 
 
 def main(argv):
-    feature = ['cnt', 'hum', 't1', 'season', 'is_holiday']
-    main_data = data.load_data("london_sample.csv", feature)
-    print(main_data)
-    values = {337}
-    data1, data2 = data.filter_by_feature(main_data, 'cnt', values)
-    print(data1)
-    print(data2)
+    print(argv)
+    d = data.load_data(argv[1], argv[2].split(', '))
+    d, x = data.filter_by_feature(d, 'season', [1])
+    d, x = data.filter_by_feature(d, 'is_holiday', [1])
+    data.print_details(d, ['hum'], [statistics.sum, statistics.mean, statistics.median])
 
 
 # Press the green button in the gutter to run the script.
