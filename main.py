@@ -4,8 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import sys
 import data
-import statistics
-
+import sta
+import sys
 
 def main(argv):
     print(argv)
@@ -25,7 +25,7 @@ def main(argv):
 
 
 
-
+############################  Q2  ##################################################
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main(sys.argv)
