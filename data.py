@@ -40,7 +40,6 @@ def append_row(data, new, index):
         new[key].append(data[key][index])
 
 
-
 def print_details(data, features, statistics_functions):
     for key in data.keys():
         print()
@@ -48,5 +47,5 @@ def print_details(data, features, statistics_functions):
             continue
         print(f"{key}:", end=' ')
         for f in statistics_functions:
-            w=f(data[key])
+            w = f(data[key])
             print(f"{w}  ", end=' ')
