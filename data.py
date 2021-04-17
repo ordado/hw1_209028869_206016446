@@ -5,6 +5,16 @@ import sys
 def load_data(path, features):
     df = pandas.read_csv(path, usecols=features)
     data = df.to_dict(orient="list")
+    feature_sholud_to_delete = []
+    for data_key in data.keys():
+        flag = 0
+        for elem_features in features:
+            if elem_features == data_key:
+                flag = 1
+        if flag == 0:
+            feature_sholud_to_delete.append(data_key)
+    for elem in feature_sholud_to_delete:
+        del data[elem]
     return data
 
 
