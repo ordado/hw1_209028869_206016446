@@ -10,9 +10,20 @@ import statistics
 def main(argv):
     print(argv)
     d = data.load_data(argv[1], argv[2].split(', '))
-    d, x = data.filter_by_feature(d, 'season', [1])
-    d, x = data.filter_by_feature(d, 'is_holiday', [1])
-    data.print_details(d, ['hum'], [statistics.sum, statistics.mean, statistics.median])
+    print("Question 1:")
+    print("Summer:")
+    d1, d2 = data.filter_by_feature(d, 'season', [1])
+    data.print_details(d1, ['hum', 't1', 'cnt'], [statistics.sum, statistics.mean, statistics.median])
+    print("Holiday:")
+    d1, d2 = data.filter_by_feature(d, 'is_holiday', [1])
+    data.print_details(d1, ['hum', 't1', 'cnt'], [statistics.sum, statistics.mean, statistics.median])
+    print("All:")
+    data.print_details(d, ['hum', 't1', 'cnt'], [statistics.sum, statistics.mean, statistics.median])
+
+
+
+
+
 
 
 # Press the green button in the gutter to run the script.
