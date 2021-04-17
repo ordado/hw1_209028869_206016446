@@ -40,11 +40,13 @@ def append_row(data, new, index):
         new[key].append(data[key][index])
 
 
+
 def print_details(data, features, statistics_functions):
     for key in data.keys():
+        print()
         if key not in features:
             continue
-        print(f"Printing details for {key}...")
+        print(f"{key}:", end=' ')
         for f in statistics_functions:
-            w = f(data[key])
-            print(f"Executing {f.__name__}: {w}")
+            w=f(data[key])
+            print(f"{w}  ", end=' ')

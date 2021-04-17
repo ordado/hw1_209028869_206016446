@@ -37,6 +37,7 @@ def population_statistics(feature_description, data, treatment, target, threshol
         data_target = data[target]
 
         for i, elem_target in enumerate(data_target):
+            flag = 0
             for index_row in row_above_target:
                 if index_row == i:
                     filter_target.append(elem_target)
