@@ -41,11 +41,14 @@ def append_row(data, new, index):
 
 
 def print_details(data, features, statistics_functions):
-    for key in data.keys():
-        print()
-        if key not in features:
+    for key in features:
+        if key not in data.keys():
             continue
         print(f"{key}:", end=' ')
-        for f in statistics_functions:
-            w = f(data[key])
-            print(f"{w}  ", end=' ')
+        for i, f in enumerate(statistics_functions):
+            if i == len(statistics_functions) - 1:
+                w = f(data[key])
+                print(f"{w}")
+            else:
+                w = f(data[key])
+                print(f"{w}, ", end='')

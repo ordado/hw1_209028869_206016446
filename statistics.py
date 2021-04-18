@@ -22,7 +22,7 @@ def median(values):
         l = (int)(l / 2) - 1
         return (values[l] + values[l + 1]) / 2
     else:
-        return values[math.ceil(l / 2) - 1]
+        return (float)(values[math.ceil((l - 1) / 2)])
 
 
 def population_statistics(feature_description, data, treatment, target, threshold, is_above, statistic_functions):

@@ -8,10 +8,10 @@ import statistics
 
 
 def main(argv):
-#
-#####################################  Q1  ##############################################################
+    # argv[1], argv[2].split(', ')
+    #####################################  Q1  ##############################################################
     print(argv)
-    d = data.load_data(argv[1], argv[2].split(', '))
+    d = data.load_data("london_sample.csv", ['season', 't1', 'is_holiday', 'cnt', 'hum'])
     print("Question 1:")
     print("Summer:")
     d1, d2 = data.filter_by_feature(d, 'season', [1])
@@ -22,18 +22,14 @@ def main(argv):
     print("All:")
     data.print_details(d, ['hum', 't1', 'cnt'], [statistics.sum, statistics.mean, statistics.median])
 
-
-
-
-
-
     ############################  Q2  ##################################################
+    print("")
     print("Question 2:")
     print("If t1<=13.0, then:")
     print("Winter holiday records:")
     data_main = data.load_data("london_sample.csv", ['season', 't1', 'is_holiday', 'cnt', 'hum'])
-    d1, d2 = data.filter_by_feature(data_main, 'season', [3])
-    winter_holiday, is_not_holiday = data.filter_by_feature(d1, 'is_holiday', [1])
+    data_main_1, data_main_2 = data.filter_by_feature(data_main, 'season', [3])
+    winter_holiday, is_not_holiday = data.filter_by_feature(data_main_1, 'is_holiday', [1])
     statistics.population_statistics('cnt', winter_holiday, 't1', 'cnt', 13.0, False,
                                      [statistics.mean, statistics.median])
     print("Winter weekday records:")
