@@ -1,5 +1,3 @@
-import sys
-import pandas
 import math
 
 
@@ -12,22 +10,22 @@ def sum(values):
 
 def mean(values):
     s = sum(values)
-    return (s / len(values))
+    return s / len(values)
 
 
 def median(values):
     values.sort()
-    l = len(values)
-    if l % 2 == 0:
-        l = (int)(l / 2) - 1
-        return (values[l] + values[l + 1]) / 2
+    len_of_values = len(values)
+    if len_of_values % 2 == 0:
+        len_of_values = int(len_of_values / 2) - 1
+        return (values[len_of_values] + values[len_of_values + 1]) / 2
     else:
-        return (float)(values[math.ceil((l - 1) / 2)])
+        return float(values[math.ceil((len_of_values - 1) / 2)])
 
 
 def population_statistics(feature_description, data, treatment, target, threshold, is_above, statistic_functions):
     filter_target = []
-    if is_above == True:
+    if is_above:
         row_above_target = []
         data_treatment = data[treatment]
         for i, val in enumerate(data_treatment):
@@ -37,7 +35,6 @@ def population_statistics(feature_description, data, treatment, target, threshol
         data_target = data[target]
 
         for i, elem_target in enumerate(data_target):
-            flag = 0
             for index_row in row_above_target:
                 if index_row == i:
                     filter_target.append(elem_target)
