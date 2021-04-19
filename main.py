@@ -2,12 +2,16 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-import sys
 import data
-import sta
 import sys
+import statistics
+
 
 def main(argv):
+    """Main interface for running the program"""
+
+    # "london_sample.csv", ['season', 't1', 'is_holiday', 'cnt', 'hum']
+    #  Q1
     print(argv)
     d = data.load_data(argv[1], argv[2].split(', '))
     print("Question 1:")
@@ -20,12 +24,28 @@ def main(argv):
     print("All:")
     data.print_details(d, ['hum', 't1', 'cnt'], [statistics.sum, statistics.mean, statistics.median])
 
+    #  Q2
+    print("")
+    print("Question 2:")
+    print("If t1<=13.0, then:")
+    print("Winter holiday records:")
+    data_main = data.load_data(argv[1], argv[2].split(', '))
+    data_main_1, data_main_2 = data.filter_by_feature(data_main, 'season', [3])
+    winter_holiday, is_not_holiday = data.filter_by_feature(data_main_1, 'is_holiday', [1])
+    statistics.population_statistics('cnt', winter_holiday, 't1', 'cnt', 13.0, False,
+                                     [statistics.mean, statistics.median])
+    print("Winter weekday records:")
+    statistics.population_statistics('cnt', is_not_holiday, 't1', 'cnt', 13.0, False,
+                                     [statistics.mean, statistics.median])
+    print("If t1>13.0, then:")
+    print("Winter holiday records:")
+    statistics.population_statistics('cnt', winter_holiday, 't1', 'cnt', 13.0, True,
+                                     [statistics.mean, statistics.median])
+    print("Winter weekday records:")
+    statistics.population_statistics('cnt', is_not_holiday, 't1', 'cnt', 13.0, True,
+                                     [statistics.mean, statistics.median])
 
 
-
-
-
-############################  Q2  ##################################################
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main(sys.argv)
