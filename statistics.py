@@ -4,6 +4,11 @@ import math
 
 
 def sum(values):
+    """
+
+    :param values: a list of numbers
+    :return sum of the numbers in the list
+    """
     s = 0
     for value in values:
         s += value
@@ -11,11 +16,21 @@ def sum(values):
 
 
 def mean(values):
+    """
+
+    :param values: values: a list of numbers
+    :return average of the numbers in the list
+    """
     s = sum(values)
     return s / len(values)
 
 
 def median(values):
+    """
+
+    :param values: values: a list of numbers
+    :return median number of the sorted list
+    """
     values.sort()
     l = len(values)
     if l % 2 == 0:
@@ -25,6 +40,18 @@ def median(values):
 
 
 def population_statistics(feature_description, data, treatment, target, threshold, is_above, statistic_functions):
+    """
+
+    :param feature_description: a string that describes the name
+    :param data: a dict-keys are the features, values are lists indicating the key's value
+    :param treatment: a key from the data
+    :param target: a key from the data
+    :param threshold: indicates threshold value for the key 'treatment'
+    :param is_above: false or true
+    :param statistic_functions: statistics functions from this module
+
+    **     prints statistical information according to the arguments
+    """
     filter_target = []
     if is_above == True:
         row_above_target = []
